@@ -10,7 +10,7 @@ export default class extends AbstractView {
     return `
       <h1>환영합니다.</h1>
       <p>
-        Incididunt fugiat commodo nostrud ullamco et ut mollit consequat cillum esse in sint duis sint.
+        바닐라 자바스크립트로 구현한 SPA입니다.
       </p>
       <p>
         <a href="/posts" data-link>최근 포스트 보기</a>
