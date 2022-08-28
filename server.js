@@ -12,4 +12,6 @@ app.get('/*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'frontend', 'index.html'));
 });
 
-app.listen(process.env.PORT || 8090, () => console.log('서버 실행 중...'));
+const PORT = process.env.PORT || 8090;
+
+app.listen(PORT, () => console.log(`⛵️ ${PORT} 포트에서 서버 실행 중...`));
