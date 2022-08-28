@@ -1,1 +1,42 @@
-console.log('JavaScript가 로딩되었습니다!');
+const navigateTo = (url) => {
+  history.pushState(null, null, url);
+  router();
+};
+
+const router = async () => {
+  const routes = [
+    { path: '/', view: () => console.log('대시보드 페이지') },
+    { path: '/posts', view: () => console.log('포스트 페이지') },
+    { path: '/settings', view: () => console.log('설정 페이지') },
+  ];
+
+  const potentialMatches = routes.map((route) => {
+    return {
+      route,
+      isMatch: location.pathname === route.path,
+    };
+  });
+
+  let match = potentialMatches.find((potentialMatch) => potentialMatch.isMatch);
+
+  if (!match) {
+    match = {
+      route: routes[0],
+      isMatch: true,
+    };
+  }
+
+  console.log(match.route.view());
+};
+
+window.addEventListener('popstate', router);
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.body.addEventListener('click', (e) => {
+    if (e.target.matches('[data-link]')) {
+      e.preventDefault();
+      navigateTo(e.target.href);
+    }
+  });
+  // router();
+});
