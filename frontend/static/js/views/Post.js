@@ -3,14 +3,15 @@ import AbstractView from './AbstractView.js';
 export default class extends AbstractView {
   constructor(params) {
     super(params);
-    this.setTitle('설정');
+    this.setTitle('포스트');
   }
 
   async getHtml() {
     return `
-      <h1>설정</h1>
+      <h1>포스트</h1>
+      <h3>${this.params.id}번</h3>
       <p>
-        환경 설정을 관리하세요.
+        포스트입니다.
       </p>
     `;
   }
